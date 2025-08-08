@@ -28,6 +28,17 @@ domainModel:
         Part of the Patient aggregate.
         Business rules may limit state transitions.
 
+    - name: MedicalService
+      stereotype: Entity
+      attributes:
+        - name: id
+          type: MedicalServiceId
+        - name: name
+          type: ServiceName
+      note: >
+        Represents a medical service associated with a case.
+        The name can be either PMN or MSN.
+
   valueObjects:
     - name: Anamnesis
       stereotype: ValueObject
@@ -46,6 +57,13 @@ domainModel:
       stereotype: ValueObject
     - name: CaseStatus
       stereotype: ValueObject
+    - name: ServiceName
+      stereotype: ValueObject
+      note: >
+        Represents the name of the medical service.
+        Can only be either PMN or MSN.
+    - name: MedicalServiceId
+      stereotype: ValueObject
 
   relationships:
     - from: Patient
@@ -60,3 +78,9 @@ domainModel:
         from: "1"
         to: "1"
       label: contains
+    - from: MedicalCase
+      to: MedicalService
+      multiplicity:
+        from: "1"
+        to: "1"
+      label: has
