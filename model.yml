@@ -1,14 +1,14 @@
 domainModel:
   name: Patient Medical Case Domain 4
   entities:
-    - name: Patient
+    - name: Patient2
       stereotype: Entity
       attributes:
         - name: id
           type: PatientId
         - name: name
           type: String
-        - name: dateOfBirth3
+        - name: dateOfBirth
           type: Date
       note: >
         Represents an aggregate root.
