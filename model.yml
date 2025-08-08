@@ -1,0 +1,62 @@
+domainModel:
+  name: Patient Medical Case Domain
+  entities:
+    - name: Patient
+      stereotype: Entity
+      attributes:
+        - name: id
+          type: PatientId
+        - name: name
+          type: String
+        - name: dateOfBirth3
+          type: Date
+      note: >
+        Represents an aggregate root.
+        Responsible for ensuring invariants
+        across its medical cases.
+
+    - name: MedicalCase
+      stereotype: Entity
+      attributes:
+        - name: id
+          type: MedicalCaseId
+        - name: openedOn
+          type: Date
+        - name: status
+          type: CaseStatus
+      note: >
+        Part of the Patient aggregate.
+        Business rules may limit state transitions.
+
+  valueObjects:
+    - name: Anamnesis
+      stereotype: ValueObject
+      attributes:
+        - name: description
+          type: String
+        - name: createdOn
+          type: Date
+      note: >
+        Immutable record describing
+        the patient's condition at case start.
+
+    - name: PatientId
+      stereotype: ValueObject
+    - name: MedicalCaseId
+      stereotype: ValueObject
+    - name: CaseStatus
+      stereotype: ValueObject
+
+  relationships:
+    - from: Patient
+      to: MedicalCase
+      multiplicity:
+        from: "1"
+        to: "0..*"
+      label: owns
+    - from: MedicalCase
+      to: Anamnesis
+      multiplicity:
+        from: "1"
+        to: "1"
+      label: contains
