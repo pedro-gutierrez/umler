@@ -1,5 +1,5 @@
 domainModel:
-  name: Patient Medical Case Domain 2
+  name: Patient Medical Case Domain 3
   entities:
     - name: Patient
       stereotype: Entity
