@@ -143,10 +143,14 @@
           {
             "name": "emailAddress",
             "type": "String"
+          },
+          {
+            "name": "address",
+            "type": "Address"
           }
         ],
         "name": "ContactInfo",
-        "note": "Contains contact information like phone number and email address",
+        "note": "Contains contact information like phone number, email address, and address",
         "stereotype": "Entity"
       }
     ],
@@ -289,6 +293,11 @@
       },
       {
         "name": "ContactInfoId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "Address",
+        "note": "Represents a complete address including street, city, postal code, and country",
         "stereotype": "ValueObject"
       }
     ]
