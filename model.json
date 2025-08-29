@@ -8,10 +8,6 @@
             "type": "PatientId"
           },
           {
-            "name": "contactInformation",
-            "type": "ContactInfo"
-          },
-          {
             "name": "insertedAt",
             "type": "DateTime"
           },
@@ -181,8 +177,9 @@
             "type": "Language"
           },
           {
+            "multivalued": true,
             "name": "acceptedLanguages",
-            "type": "LanguageList"
+            "type": "Language"
           },
           {
             "name": "insertedAt",
@@ -195,6 +192,33 @@
         ],
         "name": "LanguagePrefs",
         "note": "Represents the language preferences for a patient, including preferred and accepted languages.",
+        "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "ContactInfoId"
+          },
+          {
+            "name": "phoneNumber",
+            "type": "String"
+          },
+          {
+            "name": "emailAddress",
+            "type": "String"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
+          }
+        ],
+        "name": "ContactInfo",
+        "note": "Contains contact information like phone number and email address",
         "stereotype": "Entity"
       }
     ],
@@ -271,6 +295,15 @@
           "to": "1"
         },
         "to": "LanguagePrefs"
+      },
+      {
+        "from": "Patient",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "1"
+        },
+        "to": "ContactInfo"
       }
     ],
     "valueObjects": [
@@ -313,11 +346,6 @@
         "stereotype": "ValueObject"
       },
       {
-        "name": "ContactInfo",
-        "note": "Contains contact information like phone number, email, address",
-        "stereotype": "ValueObject"
-      },
-      {
         "name": "Gender",
         "note": "Represents the gender of the patient",
         "stereotype": "ValueObject"
@@ -332,8 +360,7 @@
         "stereotype": "ValueObject"
       },
       {
-        "name": "LanguageList",
-        "note": "Represents a list of language codes",
+        "name": "ContactInfoId",
         "stereotype": "ValueObject"
       }
     ]
