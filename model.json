@@ -16,7 +16,7 @@
             "type": "Date"
           }
         ],
-        "name": "Patient2",
+        "name": "Patient",
         "note": "Represents an aggregate root. Responsible for ensuring invariants across its medical cases.",
         "stereotype": "Entity"
       },
