@@ -6,6 +6,17 @@
           {
             "name": "id",
             "type": "PatientId"
+          }
+        ],
+        "name": "Patient",
+        "note": "Represents an aggregate root. Responsible for ensuring invariants across its cases.",
+        "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "DemographicsId"
           },
           {
             "name": "name",
@@ -16,8 +27,8 @@
             "type": "Date"
           }
         ],
-        "name": "Patient",
-        "note": "Represents an aggregate root. Responsible for ensuring invariants across its cases.",
+        "name": "Demographics",
+        "note": "Contains demographic information for a patient",
         "stereotype": "Entity"
       },
       {
@@ -89,6 +100,15 @@
     "relationships": [
       {
         "from": "Patient",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "1"
+        },
+        "to": "Demographics"
+      },
+      {
+        "from": "Patient",
         "label": "owns",
         "multiplicity": {
           "from": "1",
@@ -136,6 +156,10 @@
     "valueObjects": [
       {
         "name": "PatientId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "DemographicsId",
         "stereotype": "ValueObject"
       },
       {
