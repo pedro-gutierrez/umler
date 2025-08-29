@@ -58,7 +58,7 @@
         "attributes": [
           {
             "name": "id",
-            "type": "AnamnesisId"
+            "type": "AnamnesisEntryId"
           },
           {
             "name": "description",
@@ -69,8 +69,19 @@
             "type": "Date"
           }
         ],
-        "name": "Anamnesis",
-        "note": "Represents the patient's medical history and background information.",
+        "name": "AnamnesisEntry",
+        "note": "Represents a single entry in the patient's medical history.",
+        "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "AnamnesisHistoryId"
+          }
+        ],
+        "name": "AnamnesisHistory",
+        "note": "Represents the complete history of a patient's medical background information.",
         "stereotype": "Entity"
       }
     ],
@@ -90,9 +101,9 @@
         "label": "has",
         "multiplicity": {
           "from": "1",
-          "to": "0..1"
+          "to": "1"
         },
-        "to": "Anamnesis"
+        "to": "AnamnesisHistory"
       },
       {
         "from": "Case",
@@ -102,6 +113,24 @@
           "to": "1"
         },
         "to": "Service"
+      },
+      {
+        "from": "Case",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..1"
+        },
+        "to": "AnamnesisEntry"
+      },
+      {
+        "from": "AnamnesisHistory",
+        "label": "contains",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..*"
+        },
+        "to": "AnamnesisEntry"
       }
     ],
     "valueObjects": [
@@ -127,7 +156,11 @@
         "stereotype": "ValueObject"
       },
       {
-        "name": "AnamnesisId",
+        "name": "AnamnesisEntryId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "AnamnesisHistoryId",
         "stereotype": "ValueObject"
       }
     ]
