@@ -17,14 +17,14 @@
           }
         ],
         "name": "Patient",
-        "note": "Represents an aggregate root. Responsible for ensuring invariants across its medical cases.",
+        "note": "Represents an aggregate root. Responsible for ensuring invariants across its cases.",
         "stereotype": "Entity"
       },
       {
         "attributes": [
           {
             "name": "id",
-            "type": "MedicalCaseId"
+            "type": "CaseId"
           },
           {
             "name": "openedOn",
@@ -35,7 +35,7 @@
             "type": "CaseStatus"
           }
         ],
-        "name": "MedicalCase",
+        "name": "Case",
         "note": "Part of the Patient aggregate. Business rules may limit state transitions.",
         "stereotype": "Entity"
       },
@@ -43,15 +43,15 @@
         "attributes": [
           {
             "name": "id",
-            "type": "MedicalServiceId"
+            "type": "ServiceId"
           },
           {
             "name": "name",
             "type": "ServiceName"
           }
         ],
-        "name": "MedicalService",
-        "note": "Represents a medical service associated with a case. The name can be either PMN or MSN.",
+        "name": "Service",
+        "note": "Represents a service associated with a case. The name can be either PMN or MSN.",
         "stereotype": "Entity"
       },
       {
@@ -83,7 +83,7 @@
           "from": "1",
           "to": "0..*"
         },
-        "to": "MedicalCase"
+        "to": "Case"
       },
       {
         "from": "Patient",
@@ -95,13 +95,13 @@
         "to": "Anamnesis"
       },
       {
-        "from": "MedicalCase",
+        "from": "Case",
         "label": "has",
         "multiplicity": {
           "from": "1",
           "to": "1"
         },
-        "to": "MedicalService"
+        "to": "Service"
       }
     ],
     "valueObjects": [
@@ -110,7 +110,7 @@
         "stereotype": "ValueObject"
       },
       {
-        "name": "MedicalCaseId",
+        "name": "CaseId",
         "stereotype": "ValueObject"
       },
       {
@@ -119,11 +119,11 @@
       },
       {
         "name": "ServiceName",
-        "note": "Represents the name of the medical service. Can only be either PMN or MSN.",
+        "note": "Represents the name of the service. Can only be either PMN or MSN.",
         "stereotype": "ValueObject"
       },
       {
-        "name": "MedicalServiceId",
+        "name": "ServiceId",
         "stereotype": "ValueObject"
       },
       {
