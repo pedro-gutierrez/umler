@@ -6,14 +6,6 @@
           {
             "name": "id",
             "type": "PatientId"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "Patient",
@@ -37,14 +29,6 @@
           {
             "name": "gender",
             "type": "Gender"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "Demographics",
@@ -60,14 +44,6 @@
           {
             "name": "status",
             "type": "CaseStatus"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "Case",
@@ -83,14 +59,6 @@
           {
             "name": "name",
             "type": "ServiceName"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "Service",
@@ -106,14 +74,6 @@
           {
             "name": "description",
             "type": "String"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "AnamnesisEntry",
@@ -125,14 +85,6 @@
           {
             "name": "id",
             "type": "AnamnesisHistoryId"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "AnamnesisHistory",
@@ -152,14 +104,6 @@
           {
             "name": "diagnosedOn",
             "type": "Date"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "Diagnosis",
@@ -180,14 +124,6 @@
             "multivalued": true,
             "name": "acceptedLanguages",
             "type": "Language"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "LanguagePrefs",
@@ -207,14 +143,6 @@
           {
             "name": "emailAddress",
             "type": "String"
-          },
-          {
-            "name": "insertedAt",
-            "type": "DateTime"
-          },
-          {
-            "name": "updatedAt",
-            "type": "DateTime"
           }
         ],
         "name": "ContactInfo",
