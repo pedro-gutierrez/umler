@@ -169,6 +169,33 @@
         "name": "Diagnosis",
         "note": "Represents a diagnosis associated with a case.",
         "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "LanguagePrefsId"
+          },
+          {
+            "name": "preferredLanguage",
+            "type": "Language"
+          },
+          {
+            "name": "acceptedLanguages",
+            "type": "LanguageList"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
+          }
+        ],
+        "name": "LanguagePrefs",
+        "note": "Represents the language preferences for a patient, including preferred and accepted languages.",
+        "stereotype": "Entity"
       }
     ],
     "name": "Admission Domain Model",
@@ -235,6 +262,15 @@
           "to": "0..*"
         },
         "to": "AnamnesisEntry"
+      },
+      {
+        "from": "Patient",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "1"
+        },
+        "to": "LanguagePrefs"
       }
     ],
     "valueObjects": [
@@ -284,6 +320,20 @@
       {
         "name": "Gender",
         "note": "Represents the gender of the patient",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "LanguagePrefsId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "Language",
+        "note": "Represents a language code, typically using ISO notation (e.g., 'de_DE')",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "LanguageList",
+        "note": "Represents a list of language codes",
         "stereotype": "ValueObject"
       }
     ]
