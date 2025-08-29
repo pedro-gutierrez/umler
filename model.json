@@ -1,10 +1,7 @@
 {
   "domainModel": {
-    "name": "Patient Medical Case Domain 4",
     "entities": [
       {
-        "name": "Patient2",
-        "stereotype": "Entity",
         "attributes": [
           {
             "name": "id",
@@ -19,11 +16,11 @@
             "type": "Date"
           }
         ],
-        "note": "Represents an aggregate root. Responsible for ensuring invariants across its medical cases."
+        "name": "Patient2",
+        "note": "Represents an aggregate root. Responsible for ensuring invariants across its medical cases.",
+        "stereotype": "Entity"
       },
       {
-        "name": "MedicalCase",
-        "stereotype": "Entity",
         "attributes": [
           {
             "name": "id",
@@ -38,11 +35,11 @@
             "type": "CaseStatus"
           }
         ],
-        "note": "Part of the Patient aggregate. Business rules may limit state transitions."
+        "name": "MedicalCase",
+        "note": "Part of the Patient aggregate. Business rules may limit state transitions.",
+        "stereotype": "Entity"
       },
       {
-        "name": "MedicalService",
-        "stereotype": "Entity",
         "attributes": [
           {
             "name": "id",
@@ -53,14 +50,16 @@
             "type": "ServiceName"
           }
         ],
-        "note": "Represents a medical service associated with a case. The name can be either PMN or MSN."
-      }
-    ],
-    "valueObjects": [
+        "name": "MedicalService",
+        "note": "Represents a medical service associated with a case. The name can be either PMN or MSN.",
+        "stereotype": "Entity"
+      },
       {
-        "name": "Anamnesis",
-        "stereotype": "ValueObject",
         "attributes": [
+          {
+            "name": "id",
+            "type": "AnamnesisId"
+          },
           {
             "name": "description",
             "type": "String"
@@ -70,8 +69,42 @@
             "type": "Date"
           }
         ],
-        "note": "Immutable record describing the patient's condition at case start."
+        "name": "Anamnesis",
+        "note": "Represents the patient's medical history and background information.",
+        "stereotype": "Entity"
+      }
+    ],
+    "name": "Patient Medical Case Domain 4",
+    "relationships": [
+      {
+        "from": "Patient",
+        "label": "owns",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..*"
+        },
+        "to": "MedicalCase"
       },
+      {
+        "from": "Patient",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..1"
+        },
+        "to": "Anamnesis"
+      },
+      {
+        "from": "MedicalCase",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "1"
+        },
+        "to": "MedicalService"
+      }
+    ],
+    "valueObjects": [
       {
         "name": "PatientId",
         "stereotype": "ValueObject"
@@ -86,41 +119,16 @@
       },
       {
         "name": "ServiceName",
-        "stereotype": "ValueObject",
-        "note": "Represents the name of the medical service. Can only be either PMN or MSN."
+        "note": "Represents the name of the medical service. Can only be either PMN or MSN.",
+        "stereotype": "ValueObject"
       },
       {
         "name": "MedicalServiceId",
         "stereotype": "ValueObject"
-      }
-    ],
-    "relationships": [
-      {
-        "from": "Patient",
-        "to": "MedicalCase",
-        "multiplicity": {
-          "from": "1",
-          "to": "0..*"
-        },
-        "label": "owns"
       },
       {
-        "from": "MedicalCase",
-        "to": "Anamnesis",
-        "multiplicity": {
-          "from": "1",
-          "to": "1"
-        },
-        "label": "contains"
-      },
-      {
-        "from": "MedicalCase",
-        "to": "MedicalService",
-        "multiplicity": {
-          "from": "1",
-          "to": "1"
-        },
-        "label": "has"
+        "name": "AnamnesisId",
+        "stereotype": "ValueObject"
       }
     ]
   }
