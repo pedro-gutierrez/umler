@@ -74,7 +74,7 @@
         "stereotype": "Entity"
       }
     ],
-    "name": "Patient Medical Case Domain 4",
+    "name": "Admission Domain Model",
     "relationships": [
       {
         "from": "Patient",
