@@ -6,6 +6,18 @@
           {
             "name": "id",
             "type": "PatientId"
+          },
+          {
+            "name": "contactInformation",
+            "type": "ContactInfo"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "Patient",
@@ -25,6 +37,18 @@
           {
             "name": "dateOfBirth",
             "type": "Date"
+          },
+          {
+            "name": "gender",
+            "type": "Gender"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "Demographics",
@@ -38,16 +62,20 @@
             "type": "CaseId"
           },
           {
-            "name": "openedOn",
-            "type": "Date"
-          },
-          {
             "name": "status",
             "type": "CaseStatus"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "Case",
-        "note": "Part of the Patient aggregate. Business rules may limit state transitions.",
+        "note": "Part of the Patient aggregate. Business rules: 1) Cannot change status from Closed to Open. 2) Must have a Service assigned before changing status to In Progress.",
         "stereotype": "Entity"
       },
       {
@@ -59,6 +87,14 @@
           {
             "name": "name",
             "type": "ServiceName"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "Service",
@@ -76,8 +112,12 @@
             "type": "String"
           },
           {
-            "name": "createdOn",
-            "type": "Date"
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "AnamnesisEntry",
@@ -89,10 +129,45 @@
           {
             "name": "id",
             "type": "AnamnesisHistoryId"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
           }
         ],
         "name": "AnamnesisHistory",
         "note": "Represents the complete history of a patient's medical background information.",
+        "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "DiagnosisId"
+          },
+          {
+            "name": "description",
+            "type": "String"
+          },
+          {
+            "name": "diagnosedOn",
+            "type": "Date"
+          },
+          {
+            "name": "insertedAt",
+            "type": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "type": "DateTime"
+          }
+        ],
+        "name": "Diagnosis",
+        "note": "Represents a diagnosis associated with a case.",
         "stereotype": "Entity"
       }
     ],
@@ -144,6 +219,15 @@
         "to": "AnamnesisEntry"
       },
       {
+        "from": "Case",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..1"
+        },
+        "to": "Diagnosis"
+      },
+      {
         "from": "AnamnesisHistory",
         "label": "contains",
         "multiplicity": {
@@ -168,6 +252,7 @@
       },
       {
         "name": "CaseStatus",
+        "note": "Possible values: Open, InProgress, Closed",
         "stereotype": "ValueObject"
       },
       {
@@ -185,6 +270,20 @@
       },
       {
         "name": "AnamnesisHistoryId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "DiagnosisId",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "ContactInfo",
+        "note": "Contains contact information like phone number, email, address",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "Gender",
+        "note": "Represents the gender of the patient",
         "stereotype": "ValueObject"
       }
     ]
