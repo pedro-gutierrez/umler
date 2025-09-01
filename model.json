@@ -152,6 +152,37 @@
         "name": "ContactInfo",
         "note": "Contains contact information like phone number, email address, and address",
         "stereotype": "Entity"
+      },
+      {
+        "attributes": [
+          {
+            "name": "id",
+            "type": "ContactPersonId"
+          },
+          {
+            "name": "name",
+            "type": "String"
+          },
+          {
+            "name": "relationship",
+            "type": "String"
+          },
+          {
+            "name": "phoneNumber",
+            "type": "String"
+          },
+          {
+            "name": "emailAddress",
+            "type": "String"
+          },
+          {
+            "name": "isPrimary",
+            "type": "Boolean"
+          }
+        ],
+        "name": "ContactPerson",
+        "note": "Represents a contact person for a patient, such as emergency contact, family member, or caregiver",
+        "stereotype": "Entity"
       }
     ],
     "name": "Admission Domain Model",
@@ -236,6 +267,15 @@
           "to": "1"
         },
         "to": "ContactInfo"
+      },
+      {
+        "from": "Patient",
+        "label": "has",
+        "multiplicity": {
+          "from": "1",
+          "to": "0..*"
+        },
+        "to": "ContactPerson"
       }
     ],
     "valueObjects": [
@@ -298,6 +338,10 @@
       {
         "name": "Address",
         "note": "Represents a complete address including street, city, postal code, and country",
+        "stereotype": "ValueObject"
+      },
+      {
+        "name": "ContactPersonId",
         "stereotype": "ValueObject"
       }
     ]
